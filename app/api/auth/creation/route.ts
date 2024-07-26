@@ -30,5 +30,5 @@ export async function GET() {
     });
   };
 
-  return NextResponse.redirect(`${process.env.BASE_URL}`);
+  return NextResponse.redirect(`${process.env.NODE_ENV === "development" ? "https://localhost:3000" : "https://url-shorten-rose.vercel.app"}`);
 }

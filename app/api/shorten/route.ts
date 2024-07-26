@@ -38,8 +38,9 @@ export async function POST(req: NextRequest) {
 
 function generateURL(num: number) {
   const shortUrlId = nanoid(num);
+  const baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://url-shorten-rose.vercel.app"
   return {
-    shortUrl: `${process.env.BASE_URL}/${shortUrlId}`,
+    shortUrl: `${baseURL}/${shortUrlId}`,
     urlId: shortUrlId
   };
 }

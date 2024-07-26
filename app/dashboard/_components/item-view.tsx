@@ -28,7 +28,7 @@ export const ItemView = ({ label, url, hrefUrl }: ItemViewProps) => {
   }, [isCopied])
 
   const handleCopy = async () => {
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL!
+    const baseURL = process.env.NODE_ENV === "development" ? "https://localhost:3000" : "https://url-shorten-rose.vercel.app"
     const fullURL = hrefUrl ? `${baseURL}${hrefUrl}` : url
     await navigator.clipboard.writeText(fullURL)
     setIsCopied(true)
